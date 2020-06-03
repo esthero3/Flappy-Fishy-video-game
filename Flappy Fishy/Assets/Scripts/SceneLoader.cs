@@ -17,14 +17,14 @@ public class SceneLoader : MonoBehaviour {
     {
         SceneManager.LoadScene(0);
         // FindObjectOfType
-        FindObjectOfType<GameSession>().ResetScore();
+        //FindObjectOfType<GameSession>().ResetScore();
     }
 
     //Replays the game
     public void Replay()
     {
         SceneManager.LoadScene(1);
-        FindObjectOfType<GameSession>().ResetScore();
+        //FindObjectOfType<GameSession>().ResetScore();
     }
 
     //quits game

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fishy : MonoBehaviour {
 
@@ -13,6 +14,7 @@ public class Fishy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         myRigidBody2D = GetComponent<Rigidbody2D>();
+        Time.timeScale = 0;
     }
 	
 	//Fishy jumps every time mouse is right clicked or space bar is pressed
@@ -20,6 +22,7 @@ public class Fishy : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             Jump();
+            Time.timeScale = 1;
         }
     }
 
@@ -30,9 +33,14 @@ public class Fishy : MonoBehaviour {
     }
 
     //end game when Fishy collides with the floor
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("dead");
-        // SceneManager.LoadScene("Game Over");
+        if (other.CompareTag("Lose"))
+        {
+            Debug.Log("dead");
+            SceneManager.LoadScene("Game Over");
+        }
+        
+        
     }
 }
